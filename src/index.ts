@@ -1,4 +1,5 @@
-const { Helper } = require("codeceptjs");
+//const { Helper } = require("codeceptjs");
+import Helper from '@codeceptjs/helper'
 const resemble = require("resemblejs");
 const fs = require("fs");
 const assert = require("assert");
@@ -10,6 +11,8 @@ const sizeOf = require("image-size-next");
 const Container = require("codeceptjs/lib/container");
 const supportedHelper = ["Playwright", "Puppeteer", "WebDriver", "TestCafe", "Appium"];
 let outputDir: string;
+
+const config = {}
 
 /**
  * Resemble.js helper class for CodeceptJS, this allows screen comparison
@@ -61,7 +64,6 @@ class ResembleHelper extends Helper {
 	diffFolder: string;
 	screenshotFolder?: string;
 	prepareBaseImage?: boolean;
-	config?: any;
 
 	constructor(config: any) {
 		// @ts-ignore
@@ -297,10 +299,10 @@ class ResembleHelper extends Helper {
 				Key: `output/${baseImage}`,
 				Body: base64data,
 			};
-			s3.upload(params, (uErr: any, uData: { Location: any }) => {
+			/*s3.upload(params, (uErr: any, uData: { Location: any }) => {
 				if (uErr) throw uErr;
 				console.log(`Screenshot Image uploaded successfully at ${uData.Location}`);
-			});
+			});*/
 		});
 		fs.readFile(this._getDiffImagePath(baseImage), (err: any, data: any) => {
 			if (err) console.log("Diff image not generated");
@@ -311,10 +313,10 @@ class ResembleHelper extends Helper {
 					Key: `diff/Diff_${baseImage}`,
 					Body: base64data,
 				};
-				s3.upload(params, (uErr: any, uData: { Location: any }) => {
+				/*s3.upload(params, (uErr: any, uData: { Location: any }) => {
 					if (uErr) throw uErr;
 					console.log(`Diff Image uploaded successfully at ${uData.Location}`);
-				});
+				});*/
 			}
 		});
 
@@ -331,10 +333,10 @@ class ResembleHelper extends Helper {
 						Key: `base/${baseImageName}`,
 						Body: base64data,
 					};
-					s3.upload(params, (uErr: any, uData: { Location: any }) => {
+					/*s3.upload(params, (uErr: any, uData: { Location: any }) => {
 						if (uErr) throw uErr;
 						console.log(`Base Image uploaded at ${uData.Location}`);
-					});
+					});*/
 				}
 			});
 		} else {
@@ -640,4 +642,4 @@ class ResembleHelper extends Helper {
 	}
 }
 
-export = ResembleHelper;
+export default ResembleHelper;

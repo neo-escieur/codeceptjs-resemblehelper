@@ -1,6 +1,7 @@
 import ResembleHelper from "../src";
-const { container } = require('codeceptjs');
-const helpers = container.helpers();
+//const { container } = require('codeceptjs');
+import helpers from '@codeceptjs/helper'
+//const helpers = container.helpers();
 
 let helper = new ResembleHelper({	baseFolder: './__test__/screenshots/base/',
     diffFolder: './__test__/screenshots/diff/',

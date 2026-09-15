@@ -1,5 +1,6 @@
 export const config: CodeceptJS.MainConfig = {
   tests: './*_test.ts',
+  require: ['tsx/esm'],
   output: './output',
   helpers: {
     Playwright: {
@@ -8,14 +9,14 @@ export const config: CodeceptJS.MainConfig = {
       browser: 'chromium'
     },
     "ResembleHelper" : {
-      "require": "../src/index",
+      "require": "../src/index.ts",
       "baseFolder": "./screenshots/base/",
       "diffFolder": "./screenshots/diff/",
       "prepareBaseImage": false
     }
   },
   include: {
-    I: './steps_file'
+    I: './custom_steps.js'
   },
   name: '__test__'
 }

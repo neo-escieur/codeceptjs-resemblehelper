@@ -1,5 +1,5 @@
 /// <reference types='codeceptjs' />
-type steps_file = typeof import('./steps_file');
+type steps_file = typeof import('./custom_step')['default'];
 type ResembleHelper = import('../src/index');
 
 declare namespace CodeceptJS {

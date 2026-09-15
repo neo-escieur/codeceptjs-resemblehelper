@@ -1,8 +1,12 @@
-const { I } = inject()
+import { actor } from "codeceptjs";
+
+//const { I } = inject()
+const I = actor();
+
 Feature('visual tests');
 
 Before(() => {
-    I.amOnPage('https://codecept.io/playwright/')
+    I.amOnPage('https://codecept.io/playwright')
 })
 
 Scenario('seeVisualDiff',  () => {
