@@ -64,15 +64,18 @@ class ResembleHelper extends Helper {
 	diffFolder: string;
 	screenshotFolder?: string;
 	prepareBaseImage?: boolean;
+	aws?: any;
 
 	constructor(config: any) {
 		// @ts-ignore
 		super(config);
+		//config =  Object.assign(config);
 		outputDir = require("codeceptjs").config.get().output || "output";
 		this.baseFolder = this.resolvePath(config.baseFolder);
 		this.diffFolder = this.resolvePath(config.diffFolder);
 		this.screenshotFolder = this.resolvePath(config.screenshotFolder || "output");
 		this.prepareBaseImage = config.prepareBaseImage;
+		this.aws = config.aws;
 	}
 
 	resolvePath(folderPath: string) {
@@ -299,10 +302,10 @@ class ResembleHelper extends Helper {
 				Key: `output/${baseImage}`,
 				Body: base64data,
 			};
-			/*s3.upload(params, (uErr: any, uData: { Location: any }) => {
+			s3.upload(params, (uErr: any, uData: { Location: any }) => {
 				if (uErr) throw uErr;
 				console.log(`Screenshot Image uploaded successfully at ${uData.Location}`);
-			});*/
+			});
 		});
 		fs.readFile(this._getDiffImagePath(baseImage), (err: any, data: any) => {
 			if (err) console.log("Diff image not generated");
@@ -421,7 +424,7 @@ class ResembleHelper extends Helper {
 			newOptions.tolerance = 0;
 		}
 
-		const awsC = this.config.aws;
+		const awsC = this.aws;
 
 		if (this._getPrepareBaseImage(newOptions)) {
 			await this._prepareBaseImage(baseImage, newOptions);

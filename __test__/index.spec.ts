@@ -1,7 +1,5 @@
 import ResembleHelper from "../src";
-//const { container } = require('codeceptjs');
 import helpers from '@codeceptjs/helper'
-//const helpers = container.helpers();
 
 let helper = new ResembleHelper({	baseFolder: './__test__/screenshots/base/',
     diffFolder: './__test__/screenshots/diff/',
@@ -20,7 +18,6 @@ describe('_getHelper()', () => {
 
 describe('_getPrepareBaseImage()', () => {
     beforeAll(() => {
-        helpers['Playwright'] = { hello: 1 }
     })
     test('should return false when no prepareBaseImage is provided', () => {
         expect(helper._getPrepareBaseImage({ prepareBaseImage: false, tolerance: 1 })).toBeFalsy()
@@ -33,7 +30,6 @@ describe('_getPrepareBaseImage()', () => {
 
 describe('_getDiffImagePath()', () => {
     beforeAll(() => {
-        helpers['Playwright'] = { hello: 1 }
     })
     test('should return diffImagePath', () => {
         expect(helper._getDiffImagePath('hello')).toContain('Diff_hello.png')
@@ -43,7 +39,6 @@ describe('_getDiffImagePath()', () => {
 
 describe('_getActualImagePath()', () => {
     beforeAll(() => {
-        helpers['Playwright'] = { hello: 1 }
     })
     test('should return ActualImagePath', () => {
         expect(helper._getActualImagePath('hello')).toContain('hello')
@@ -53,7 +48,6 @@ describe('_getActualImagePath()', () => {
 
 describe('_getBaseImagePath()', () => {
     beforeAll(() => {
-        helpers['Playwright'] = { hello: 1 }
     })
     test('should return BaseImagePath', () => {
         expect(helper._getBaseImagePath('hello', {})).toContain('hello')
@@ -63,7 +57,6 @@ describe('_getBaseImagePath()', () => {
 
 describe('resolvePath()', () => {
     beforeAll(() => {
-        helpers['Playwright'] = { hello: 1 }
     })
     test('should return resolvePath', () => {
         expect(helper.resolvePath('hello')).toContain('hello')
