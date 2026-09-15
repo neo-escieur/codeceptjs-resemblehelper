@@ -6,7 +6,7 @@ const mkdirp = require("mkdirp");
 const getDirName = require("path").dirname;
 const AWS = require("aws-sdk");
 const path = require("path");
-const sizeOf = require("image-size");
+const sizeOf = require("image-size-next");
 const Container = require("codeceptjs/lib/container");
 const supportedHelper = ["Playwright", "Puppeteer", "WebDriver", "TestCafe", "Appium"];
 let outputDir: string;
