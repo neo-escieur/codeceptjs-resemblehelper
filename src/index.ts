@@ -12,7 +12,7 @@ const Container = require("codeceptjs/lib/container");
 const supportedHelper = ["Playwright", "Puppeteer", "WebDriver", "TestCafe", "Appium"];
 let outputDir: string;
 
-const config = {}
+const config = {};
 
 /**
  * Resemble.js helper class for CodeceptJS, this allows screen comparison
