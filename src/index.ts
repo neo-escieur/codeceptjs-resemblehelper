@@ -1,5 +1,5 @@
 //const { Helper } = require("codeceptjs");
-import Helper from '@codeceptjs/helper'
+import Helper from '@codeceptjs/helper';
 const resemble = require("resemblejs");
 const fs = require("fs");
 const assert = require("assert");
